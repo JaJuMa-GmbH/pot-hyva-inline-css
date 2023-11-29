@@ -1,0 +1,156 @@
+<?php
+/**
+ * @author    JaJuMa GmbH <info@jajuma.de>
+ * @copyright Copyright (c) 2023 JaJuMa GmbH <https://www.jajuma.de>. All rights reserved.
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ */
+use Jajuma\PotHoneySpam\Block\PowerToys\HyvaInlineCss;
+use Magento\Framework\Escaper;
+/** @var HyvaInlineCss $block */
+/** @var Escaper $escaper */
+?>
+<div class="powertoys-widget-title"><?= 'Hyvä InlineCSS' ?></div>
+<?php if ($block->isParentEnable()): ?>
+    <div id="powertoys-inline-css" class="powertoys-inline-css">
+    </div>
+    <script>
+        var contentDebugCss = document.querySelector(".inlinecss-content").innerHTML;
+        document.querySelector("#powertoys-inline-css").innerHTML = contentDebugCss;
+    </script>
+<?php else: ?>
+    <a class="no-parent-module" target="blank" href="https://www.jajuma.de/en/jajuma-develop/extensions/hyva-inline-css-extension-for-magento-with-hyva-themes">
+        <img alt="Hyvä InlineCSS" src="<?= $block->getViewFileUrl('Jajuma_PotHyvaInlineCss::images/parent-module-image.png') ?>"/>
+        <?= 'Please install and enable' ?><br>
+        <?= 'Hyvä InlineCSS' ?>
+    </a>
+<?php endif; ?>
+<style>
+.powertoys-dashboard-widgets .widget-item-dashboard_inlinecss {
+    min-width: 220px;
+    background: linear-gradient(180deg, #FFE9A3 0%, rgb(255 246 221) 100%) !important;
+}
+.jajumaLightMode .powertoys-dashboard-widgets .widget-item.widget-item-dashboard_inlinecss {
+    box-shadow: 1px 1px 5px 0px rgb(0 0 0 / 31%);
+}
+.powertoys-inline-css .inlinecss-status {
+    border: none;
+    display: flex;
+    position: absolute;
+    top: 6px;
+    flex-direction: row;
+    right: 12px;
+    padding: 0;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.powertoys-inline-css .inlinecss-status > img {
+    display: none;
+}
+
+.powertoys-inline-css .inlinecss-status svg {
+    margin-bottom: -5px;
+    margin-right: 5px;
+}
+
+.powertoys-inline-css .inlinecss-status.inlinecss-tooltip .inlinecss-tooltiptext {
+    z-index: 100;
+    left: -50%;
+    transform: translateX(-50%);
+    top: 120%;
+    max-width: 200px;
+}
+
+.powertoys-inline-css .inlinecss-actions .inlinecss-tooltip {
+    padding: 6px;
+    gap: 8px;
+}
+
+.powertoys-inline-css .inlinecss-actions .inlinecss-tooltip:first-child {
+    margin-bottom: 5px;
+}
+.powertoys-inline-css .inlinecss-actions .inlinecss-tooltip:last-child {
+    transition: none;
+    margin-top: 0;
+}
+.powertoys-inline-css .inlinecss-actions .inlinecss-tooltip {
+    flex-direction: row;
+    justify-content: center;
+}
+.powertoys-inline-css .inlinecss-actions img {
+    width: 16px;
+    margin: 0;
+}
+.powertoys-inline-css .inlinecss-hitmiss-status {
+    margin-top: 5px;
+    text-align: center;
+}
+.powertoys-inline-css .inlinecss-info {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0 8px;
+    margin-bottom: 6px;
+}
+
+.powertoys-inline-css .inlinecss-generated-time,
+.powertoys-inline-css .inlinecss-download-size {
+    padding: 6px 0;
+    width: fit-content;
+    position: unset;
+}
+
+.powertoys-inline-css .inlinecss-info .inlinecss-tooltiptext {
+    z-index: 100;
+    left: 0;
+    transform: translateX(0);
+    top: 85%;
+    max-width: 200px;
+    height: fit-content;
+}
+
+.powertoys-inline-css .inlinecss-actions .inlinecss-tooltiptext {
+    z-index: 100;
+    left: 0;
+    transform: translateX(0);
+    top: -55px;
+    max-width: 200px;
+}
+
+.powertoys-inline-css .inlinecss-actions .inlinecss-tooltip:last-child .inlinecss-tooltiptext {
+    top: -35px;
+}
+
+.powertoys-inline-css .inlinecss-tooltip .inlinecss-tooltiptext:after {
+    display: none;
+}
+
+/* No parent extension */
+
+.widget-item-dashboard_inlinecss .no-parent-module img {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    transition: .3s ease transform;
+}
+
+.widget-item-dashboard_inlinecss .no-parent-module:hover img {
+    transform: translateY(-3px);
+}
+
+.widget-item-dashboard_inlinecss .no-parent-module {
+    z-index: 1;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+}
+
+</style>
