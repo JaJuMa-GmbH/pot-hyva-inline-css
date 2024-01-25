@@ -12,10 +12,95 @@ use Magento\Framework\Escaper;
 <div class="powertoys-widget-title"><?= 'Hyvä InlineCSS' ?></div>
 <?php if ($block->isParentEnable()): ?>
     <div id="powertoys-inline-css" class="powertoys-inline-css">
+        <div class="inlinecss-status inlinecss-tooltip">
+            <img src="<?= $block->getViewFileUrl('Jajuma_HyvaInlineCss::images/inline_css_icon.svg')?>" width="32" height="22"/>
+            <svg class="inlinecss-enable" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.66667 11.8333L10.1667 14.3333L14.3333 8.5M21 11C21 12.3132 20.7413 13.6136 20.2388 14.8268C19.7362 16.0401 18.9997 17.1425 18.0711 18.0711C17.1425 18.9997 16.0401 19.7362 14.8268 20.2388C13.6136 20.7413 12.3132 21 11 21C9.68678 21 8.38642 20.7413 7.17317 20.2388C5.95991 19.7362 4.85752 18.9997 3.92893 18.0711C3.00035 17.1425 2.26375 16.0401 1.7612 14.8268C1.25866 13.6136 1 12.3132 1 11C1 8.34784 2.05357 5.8043 3.92893 3.92893C5.8043 2.05357 8.34784 1 11 1C13.6522 1 16.1957 2.05357 18.0711 3.92893C19.9464 5.8043 21 8.34784 21 11Z" fill="#FFE9A3"/>
+                <path d="M7.66667 11.8333L10.1667 14.3333L14.3333 8.5M21 11C21 12.3132 20.7413 13.6136 20.2388 14.8268C19.7362 16.0401 18.9997 17.1425 18.0711 18.0711C17.1425 18.9997 16.0401 19.7362 14.8268 20.2388C13.6136 20.7413 12.3132 21 11 21C9.68678 21 8.38642 20.7413 7.17317 20.2388C5.95991 19.7362 4.85752 18.9997 3.92893 18.0711C3.00035 17.1425 2.26375 16.0401 1.7612 14.8268C1.25866 13.6136 1 12.3132 1 11C1 8.34784 2.05357 5.8043 3.92893 3.92893C5.8043 2.05357 8.34784 1 11 1C13.6522 1 16.1957 2.05357 18.0711 3.92893C19.9464 5.8043 21 8.34784 21 11Z" stroke="#31BC2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="inlinecss-tooltiptext inlinecss-enable">
+                <?= __('InlineCSS was added') ?>
+                <br>
+                <span class="inlinecss-miss"><?= __('Full Page Cache MISS') ?></span>
+                <span class="inlinecss-hit"><?= __('Full Page Cache HIT') ?></span>
+            </span>
+            <svg class="inlinecss-disable" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.5 8.5L13.5 13.5M13.5 8.5L8.5 13.5M21 11C21 12.3132 20.7413 13.6136 20.2388 14.8268C19.7363 16.0401 18.9997 17.1425 18.0711 18.0711C17.1425 18.9997 16.0401 19.7363 14.8268 20.2388C13.6136 20.7413 12.3132 21 11 21C9.68678 21 8.38642 20.7413 7.17317 20.2388C5.95991 19.7363 4.85752 18.9997 3.92893 18.0711C3.00035 17.1425 2.26375 16.0401 1.7612 14.8268C1.25866 13.6136 1 12.3132 1 11C1 8.34784 2.05357 5.8043 3.92893 3.92893C5.8043 2.05357 8.34784 1 11 1C13.6522 1 16.1957 2.05357 18.0711 3.92893C19.9464 5.8043 21 8.34784 21 11Z" stroke="#D73A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="inlinecss-tooltiptext inlinecss-disable">
+                <?= __('InlineCSS was not added (styles.css cookie was found)') ?>
+                <br>
+                <span class="inlinecss-miss"><?= __('Full Page Cache MISS') ?></span>
+                <span class="inlinecss-hit"><?= __('Full Page Cache HIT') ?></span>
+            </span>
+            <div class="inlinecss-hitmiss-status">
+                <span class="inlinecss-hitmiss-dot"></span>
+                <span class="inlinecss-miss"><?= __('Miss') ?></span>
+                <span class="inlinecss-hit"><?= __('Hit') ?></span>
+            </div>
+        </div>
+        <div class="inlinecss-info">
+            <div class="inlinecss-generated-time inlinecss-tooltip">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 4.33333V11H16M21 11C21 12.3132 20.7413 13.6136 20.2388 14.8268C19.7363 16.0401 18.9997 17.1425 18.0711 18.0711C17.1425 18.9997 16.0401 19.7363 14.8268 20.2388C13.6136 20.7413 12.3132 21 11 21C9.68678 21 8.38642 20.7413 7.17317 20.2388C5.95991 19.7363 4.85752 18.9997 3.92893 18.0711C3.00035 17.1425 2.26375 16.0401 1.7612 14.8268C1.25866 13.6136 1 12.3132 1 11C1 8.34784 2.05357 5.8043 3.92893 3.92893C5.8043 2.05357 8.34784 1 11 1C13.6522 1 16.1957 2.05357 18.0711 3.92893C19.9464 5.8043 21 8.34784 21 11Z" stroke="#3C3C3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span id="time_generate"></span>
+                <span class="inlinecss-tooltiptext"><?= __('Time spent for adding/processing InlineCSS') ?></span>
+            </div>
+            <div class="inlinecss-download-size inlinecss-tooltip">
+                <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.006 7.42729V15.043M12.006 15.043L8.62126 11.6583M12.006 15.043L15.3908 11.6583M6.08268 18.4278C4.87481 18.4291 3.70603 17.9998 2.78625 17.2168C1.86647 16.4339 1.25594 15.3487 1.06431 14.1561C0.872685 12.9636 1.11251 11.7417 1.74072 10.7101C2.36892 9.6784 3.34435 8.9045 4.49184 8.52734C4.19703 7.01679 4.50172 5.45081 5.3414 4.161C6.18108 2.87119 7.48981 1.95884 8.99044 1.61716C10.4911 1.27547 12.0658 1.53127 13.3811 2.3304C14.6964 3.12953 15.6491 4.40922 16.0373 5.8985C16.6375 5.70328 17.2804 5.6798 17.8933 5.83069C18.5062 5.98158 19.0647 6.30084 19.5057 6.75241C19.9467 7.20398 20.2527 7.76987 20.389 8.38615C20.5254 9.00244 20.4867 9.64458 20.2773 10.24C21.2009 10.5928 21.972 11.2578 22.4566 12.1197C22.9412 12.9815 23.1089 13.9857 22.9305 14.9583C22.7522 15.9308 22.239 16.8102 21.4801 17.4439C20.7211 18.0777 19.7643 18.4257 18.7756 18.4278H6.08268Z" stroke="#3C3C3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span id="size_css_content"></span>
+                <span class="inlinecss-tooltiptext"><?= __('Size of InlineCSS (gzipped)') ?></span>
+            </div>
+        </div>
+        <div class="inlinecss-actions">
+            <a class="inlinecss-tooltip" href=<?= $block->getUrl("jajumainlinecss/index/clearfullpagecache") ?>>
+                <img src="<?= $block->getViewFileUrl('Jajuma_HyvaInlineCss::images/broom.svg')?>" width="32" height="22"/>
+                <?= __('Full Page') ?>
+                <span class="inlinecss-tooltiptext"><?= __('Clear Magento Full Page Cache') ?></span>
+            </a>
+            <a class="inlinecss-tooltip" href=<?= $block->getUrl("jajumainlinecss/index/clearcssinlinecache") ?>>
+                <img src="<?= $block->getViewFileUrl('Jajuma_HyvaInlineCss::images/broom.svg')?>" width="32" height="22"/>
+                <?= __('InlineCSS') ?>
+                <span class="inlinecss-tooltiptext"><?= __('Clear InlineCSS Cache') ?></span>
+            </a>
+        </div>
     </div>
     <script>
-        var contentDebugCss = document.querySelector(".inlinecss-content").innerHTML;
-        document.querySelector("#powertoys-inline-css").innerHTML = contentDebugCss;
+        var sizeInlineCssPot = document.querySelector('#info_size_css_content').innerText;
+        var cookieValuePot = document.querySelector('#info_is_full_page_cache_cookie').innerText;
+        var inlinecssStatusPot = document.querySelector('#info_inlinecss_status').innerText;
+        var timeGeneratePot = document.querySelector('#info_time_generate').innerText;
+        var inlinecssCachedPot = document.querySelector('#info_inlinecss_cached').innerText;
+
+        if (inlinecssStatusPot != '0') {
+            document.querySelector('#powertoys-inline-css .inlinecss-status').classList.add('active');
+        }
+        document.querySelector('#powertoys-inline-css #size_css_content').innerText = Number(sizeInlineCssPot).toFixed(3) + ' KB';
+        document.querySelector('#powertoys-inline-css #time_generate').innerText = timeGeneratePot + ' s';
+
+        window.hyvainlinecss = window.hyvainlinecss || {}
+        window.hyvainlinecss[window.location.pathname.substring(1)] = sizeInlineCssPot + ' KB';
+        
+        if (window.hyvainlinecss.isHit) {
+            if (document.querySelector('head > style[jajuma-inline-css]')) {
+                var statusInLineCssPot = true;
+            } else {
+                var statusInLineCssPot = false;
+            }
+
+            document.querySelector('#powertoys-inline-css #time_generate').innerHTML = '0';
+            document.querySelector('#powertoys-inline-css .inlinecss-status').classList.add('is-hit');
+
+            if (statusInLineCssPot) {
+                document.querySelector('#powertoys-inline-css .inlinecss-status').classList.add('active');
+                document.querySelector('#powertoys-inline-css #size_css_content').innerHTML = window.hyvainlinecss[window.location.pathname.substring(1)];
+            } else {
+                document.querySelector('#powertoys-inline-css .inlinecss-status').classList.remove('active');
+            }
+        }
     </script>
 <?php else: ?>
     <a class="no-parent-module" target="blank" href="https://www.jajuma.de/en/jajuma-develop/extensions/hyva-inline-css-extension-for-magento-with-hyva-themes">
