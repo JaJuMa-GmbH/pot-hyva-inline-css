@@ -8,6 +8,8 @@ use Jajuma\PotHoneySpam\Block\PowerToys\HyvaInlineCss;
 use Magento\Framework\Escaper;
 /** @var HyvaInlineCss $block */
 /** @var Escaper $escaper */
+$powerToysHelper = $this->helper(\Jajuma\PowerToys\Helper\Data::class);
+$nonce = $powerToysHelper->getNonce();
 ?>
 <div class="powertoys-widget-title"><?= 'Hyvä InlineCSS' ?></div>
 <?php if ($block->isParentEnable()): ?>
@@ -68,7 +70,7 @@ use Magento\Framework\Escaper;
             </a>
         </div>
     </div>
-    <script>
+    <script <?= $nonce ? 'nonce="' . $nonce . '"' : '' ?>>
         var sizeInlineCssPot = document.querySelector('#info_size_css_content').innerText;
         var inlinecssStatusPot = document.querySelector('#info_inlinecss_status').innerText;
         var timeGeneratePot = document.querySelector('#info_time_generate').innerText;
